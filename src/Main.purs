@@ -14,11 +14,10 @@ import Type.Proxy (Proxy(Proxy))
 
 genericRead :: forall a. Generic a => String -> Proxy a -> Maybe a
 genericRead s p =
-  case spine of
+  case (toSignature p) of
     (SigProd _ cs) -> oneOf (map step cs)
     _ -> Nothing
  where
-  spine = toSignature p
   step constructor = do
     -- leave only last part of constructor ie. Main.Foo -> Foo
     let fullConstructorName = constructor.sigConstructor
