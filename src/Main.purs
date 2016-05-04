@@ -24,6 +24,7 @@ genericRead s p =
     let fullConstructorName = constructor.sigConstructor
     constructorName <- last <<< split "." $ fullConstructorName
     if constructorName == s
+      -- this example only works for construcotrs of kind `*`
       then fromSpine $ (SProd fullConstructorName [])
       else Nothing
 
