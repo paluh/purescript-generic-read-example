@@ -25,7 +25,7 @@ genericRead s p =
     constructorName <- last <<< split "." $ fullConstructorName
     if constructorName == s
       -- this example only works for construcotrs of kind `*`
-      then fromSpine $ (SProd fullConstructorName [])
+      then fromSpine $ SProd fullConstructorName []
       else Nothing
 
 -- this helper will be available in purescript-foldable-traversable 1.0
